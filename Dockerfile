@@ -8,7 +8,7 @@
 FROM ubuntu:16.04
 MAINTAINER Jan Grewe <jan@faked.org>
 
-ENV VERSION_SDK_TOOLS "26.0.2"
+ENV VERSION_SDK_TOOLS "3859397"
 ENV VERSION_BUILD_TOOLS "26.0.2"
 ENV VERSION_TARGET_SDK "26"
 
@@ -33,8 +33,8 @@ RUN apt-get -qq update && \
 
 RUN rm -f /etc/ssl/certs/java/cacerts; \
     /var/lib/dpkg/info/ca-certificates-java.postinst configure
-
-RUN curl -s http://dl.google.com/android/repository/tools_r${VERSION_SDK_TOOLS}-linux.zip > /tools.zip && \
+    
+RUN curl -s http://dl.google.com/android/repository/sdk-tools-linux-${VERSION_SDK_TOOLS}.zip > /tools.zip && \
     unzip /tools.zip -d ${ANDROID_HOME} && \
     rm -v /tools.zip
 
